@@ -252,7 +252,7 @@ const Courses = () => {
                                 badgeColor: 'emerald',
                                 desc: 'Comprehensive preparation for medical entrance examinations with expert faculty and advanced lab facilities.',
                                 duration: '2 Years',
-                                success: '92%',
+                                // success: '92%',
                                 image: '/classrooms/Photo 14.jpg'
                             },
                             {
@@ -262,7 +262,7 @@ const Courses = () => {
                                 badgeColor: 'blue',
                                 desc: 'Rigorous training for engineering entrance exams with focus on problem-solving and analytical skills.',
                                 duration: '2 Years',
-                                success: '89%',
+                                // success: '89%',
                                 image: '/classrooms/iitjee.jpeg'
                             },
                             {
@@ -272,7 +272,7 @@ const Courses = () => {
                                 badgeColor: 'purple',
                                 desc: 'Specialized coaching for Common Entrance Test with state-specific curriculum and pattern.',
                                 duration: '1-2 Years',
-                                success: '94%',
+                                // success: '94%',
                                 image: '/classrooms/cet.jpeg'
                             },
                             {
@@ -282,7 +282,7 @@ const Courses = () => {
                                 badgeColor: 'rose',
                                 desc: 'Global standard test preparation for undergraduate admissions in international universities.',
                                 duration: '6-12 Months',
-                                success: '96%',
+                                // success: '96%',
                                 image: '/classrooms/sat.jpeg'
                             },
                             {
@@ -292,7 +292,7 @@ const Courses = () => {
                                 badgeColor: 'indigo',
                                 desc: 'Early preparation program for students from classes 8-10 to build strong conceptual foundations.',
                                 duration: '1-3 Years',
-                                success: '98%',
+                                // success: '98%',
                                 image: '/classrooms/foundational.jpeg'
                             },
                             {
@@ -302,7 +302,7 @@ const Courses = () => {
                                 badgeColor: 'amber',
                                 desc: 'Intensive revision program for last-minute preparation and quick concept review.',
                                 duration: '3 Months',
-                                success: '85%',
+                                // success: '85%',
                                 image: '/classrooms/crashcourse.jpeg'
                             }
                         ].map((course) => (
@@ -336,10 +336,10 @@ const Courses = () => {
                                             <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider block mb-1">Duration</span>
                                             <span className="font-medium text-slate-700">{course.duration}</span>
                                         </div>
-                                        <div>
+                                        {/* <div>
                                             <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider block mb-1">Success Rate</span>
                                             <span className="font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full inline-block">{course.success}</span>
-                                        </div>
+                                        </div> */}
                                     </div>
 
                                     <button
