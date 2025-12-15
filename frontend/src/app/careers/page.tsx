@@ -12,10 +12,48 @@ const Careers = () => {
         setTimeout(() => setNotification(null), 3000);
     };
 
-    const handleCareerSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleCareerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        showNotification('Application submitted successfully! We will review and get back to you soon.', 'success');
-        (e.target as HTMLFormElement).reset();
+        const form = e.target as HTMLFormElement;
+        
+        try {
+            const formData = new FormData();
+            
+            // Add form fields
+            formData.append('fullName', (form.elements.namedItem('fullName') as HTMLInputElement).value);
+            formData.append('email', (form.elements.namedItem('email') as HTMLInputElement).value);
+            formData.append('phone', (form.elements.namedItem('phone') as HTMLInputElement).value);
+            formData.append('position', (form.elements.namedItem('position') as HTMLSelectElement).value);
+            formData.append('experience', (form.elements.namedItem('experience') as HTMLSelectElement).value);
+            formData.append('currentSalary', (form.elements.namedItem('currentSalary') as HTMLInputElement).value);
+            formData.append('qualification', (form.elements.namedItem('qualification') as HTMLInputElement).value);
+            formData.append('coverLetter', (form.elements.namedItem('coverLetter') as HTMLTextAreaElement).value);
+            
+            // Add file if selected
+            const resumeFile = (form.elements.namedItem('resume') as HTMLInputElement).files?.[0];
+            if (resumeFile) {
+                formData.append('resume', resumeFile);
+            }
+
+            const response = await fetch('http://localhost:5000/api/careers', {
+                method: "POST",
+                body: formData,
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                console.log("Response:", result);
+                showNotification('Application submitted successfully! We will review and get back to you soon.', 'success');
+                form.reset();
+            } else {
+                const error = await response.json();
+                console.error("Error response:", error);
+                showNotification(error.error || "Failed to submit application. Try again!", "error");
+            }
+        } catch (error) {
+            console.error("Error submitting application:", error);
+            showNotification("Failed to submit application. Try again!", "error");
+        }
     };
 
     return (
