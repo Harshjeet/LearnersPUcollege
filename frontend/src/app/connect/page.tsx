@@ -20,7 +20,6 @@ const Connect = () => {
     };
 
     // Form Handlers
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxfqE_m6dlZhKDQ6Szbz3kGEPa-kByjAdvArEy5KCPZTqD75SYxZtv3bG648r1Bb2BXYQ/exec";
 
     const handleInquirySubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -39,15 +38,24 @@ const Connect = () => {
             };
             console.log("Form data collected:", formData);
 
-            showNotification('Message sent successfully! We will contact you within 24 hours.', 'success');
-            form.reset();
-
-            await fetch(GOOGLE_SCRIPT_URL, {
+            const response = await fetch('http://localhost:5000/api/enquiries', {
                 method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
                 body: JSON.stringify(formData),
-                mode: "no-cors",
             });
-            console.log("Fetch request sent");
+
+            if (response.ok) {
+                const result = await response.json();
+                console.log("Response:", result);
+                showNotification('Message sent successfully! We will contact you within 24 hours.', 'success');
+                form.reset();
+            } else {
+                const error = await response.json();
+                console.error("Error response:", error);
+                showNotification(error.error || "Failed to send message. Try again!", "error");
+            }
         } catch (error) {
             console.error("Error submitting form:", error);
             showNotification("Failed to send message. Try again!", "error");
