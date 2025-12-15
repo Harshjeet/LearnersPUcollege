@@ -11,7 +11,6 @@ export default function Head() {
         name="keywords"
         content="About PU College, Learners PU College information, Best PU colleges in Vijayanagar,colleges in vijaynagar"
       />
-
       {/* Open Graph */}
       <meta property="og:title" content="About Us | Learners PU College" />
       <meta
@@ -20,15 +19,15 @@ export default function Head() {
       />
       <meta property="og:type" content="website" />
       <meta property="og:image" content="/og-image.jpg" />
-
       {/* Twitter SEO */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="About Us | Learners PU College" />
       <meta
         name="twitter:description"
-        content="Explore the mission, vision and faculty strengths of Learners PU College."
+        content="Explore the mission, vision and faculty strengths of Learners PU College ."
       />
       <meta name="twitter:image" content="/og-image.jpg" />
     </>
   );
 }
+
