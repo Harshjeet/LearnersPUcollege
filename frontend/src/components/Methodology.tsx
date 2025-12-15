@@ -8,7 +8,6 @@ import { useLanguage } from '../context/LanguageContext';
 const Methodology = () => {
     const { t } = useLanguage();
     const sectionRef = useRef(null);
-
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
@@ -99,3 +98,4 @@ const Methodology = () => {
 };
 
 export default Methodology;
+
